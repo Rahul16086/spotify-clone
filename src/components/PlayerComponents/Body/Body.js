@@ -12,6 +12,7 @@ const Body = ({ spotify }) => {
   return (
     <div className={"body"}>
       <Header spotify={spotify} />
+
       <div className={"body_info"}>
         <img src={discover_weekly?.images[0].url} alt={""} />
         <div className={"body_infoText"}>
@@ -20,12 +21,14 @@ const Body = ({ spotify }) => {
           <p>{discover_weekly?.description}</p>
         </div>
       </div>
+
       <div className={"body_songs"}>
         <div className={"body_icons"}>
           <PlayCircleFilledIcon className={"body_shuffle"} />
           <FavoriteIcon fontSize={"large"} />
           <MoreHorizIcon />
         </div>
+
         {discover_weekly?.tracks.items.map((item) => (
           <SongRow track={item.track} />
         ))}

@@ -3,8 +3,11 @@ export const initialState = {
   playlists: [],
   playing: false,
   item: null,
-  // accessToken:
-  //   "BQCaBiEpRZggdgeTHP2MYBkHedNOMIGFA0Yjiga-jtw7AxIfZU7BKKhdu2xj3zfPXNN9pecSlKw7JCPzjV5HxcZ0s_xHAOn8a2MT37pDkMVqE-ulbZ2JxzbUV_i9jaGq9dGLhSu4QokiNFUJivrvqf6drIDPIQ_QSxDC_2mhLDw3WmU_",
+  spotify: null,
+  discover_weekly: null,
+  top_artists: null,
+  accessToken: null,
+  // "BQCaBiEpRZggdgeTHP2MYBkHedNOMIGFA0Yjiga-jtw7AxIfZU7BKKhdu2xj3zfPXNN9pecSlKw7JCPzjV5HxcZ0s_xHAOn8a2MT37pDkMVqE-ulbZ2JxzbUV_i9jaGq9dGLhSu4QokiNFUJivrvqf6drIDPIQ_QSxDC_2mhLDw3WmU_",
 };
 
 const Reducer = (state, action) => {
