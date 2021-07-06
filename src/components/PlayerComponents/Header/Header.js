@@ -4,8 +4,8 @@ import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { useAuthDataValue } from "../../../Store/AuthData";
 
-const Header = () => {
-  const [{ user }, dispatch] = useAuthDataValue();
+const Header = ({ spotify }) => {
+  const [{ user }] = useAuthDataValue();
   return (
     <div className={"header"}>
       <div className={"header_left"}>

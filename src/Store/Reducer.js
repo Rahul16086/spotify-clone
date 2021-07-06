@@ -7,12 +7,9 @@ export const initialState = {
   discover_weekly: null,
   top_artists: null,
   accessToken: null,
-  // "BQCaBiEpRZggdgeTHP2MYBkHedNOMIGFA0Yjiga-jtw7AxIfZU7BKKhdu2xj3zfPXNN9pecSlKw7JCPzjV5HxcZ0s_xHAOn8a2MT37pDkMVqE-ulbZ2JxzbUV_i9jaGq9dGLhSu4QokiNFUJivrvqf6drIDPIQ_QSxDC_2mhLDw3WmU_",
 };
 
 const Reducer = (state, action) => {
-  console.log(action);
-
   switch (action.type) {
     case "SET_TOKEN":
       return {
@@ -33,6 +30,26 @@ const Reducer = (state, action) => {
       return {
         ...state,
         discover_weekly: action.discover_weekly,
+      };
+    case "SET_PLAYING":
+      return {
+        ...state,
+        playing: action.playing,
+      };
+    case "SET_ITEM":
+      return {
+        ...state,
+        item: action.item,
+      };
+    case "SET_TOP_ARTISTS":
+      return {
+        ...state,
+        top_artists: action.top_artists,
+      };
+    case "SET_SPOTIFY":
+      return {
+        ...state,
+        spotify: action.spotify,
       };
     default:
       return state;

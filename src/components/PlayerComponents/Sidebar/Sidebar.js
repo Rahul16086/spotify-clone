@@ -7,8 +7,8 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import { useAuthDataValue } from "../../../Store/AuthData";
 
 const Sidebar = () => {
-  const [{ playlists }, dispatch] = useAuthDataValue();
-  console.log(playlists);
+  const [{ playlists }] = useAuthDataValue();
+
   return (
     <div className={"sidebar"}>
       <img
@@ -25,7 +25,7 @@ const Sidebar = () => {
       <strong className={"sidebar_title"}>PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (
-        <SidebarOptions title={playlist.name} />
+        <SidebarOptions title={playlist.name} key={playlist.name} />
       ))}
     </div>
   );

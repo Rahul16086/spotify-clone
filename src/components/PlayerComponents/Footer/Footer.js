@@ -12,16 +12,15 @@ import { useAuthDataValue } from "../../../Store/AuthData";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 
 const Footer = ({ spotify }) => {
-  const [{ token, item, playing }, dispatch] = useAuthDataValue();
+  const [{ item, playing }, dispatch] = useAuthDataValue();
+
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((res) => {
-      console.log(res);
-
       dispatch({ type: "SET_PLAYING", playing: res.is_playing });
 
       dispatch({ type: "SET_ITEM", item: res.item });
     });
-  }, [spotify]);
+  }, [spotify, dispatch]);
 
   const handlePlayPause = () => {
     if (playing) {
@@ -68,7 +67,6 @@ const Footer = ({ spotify }) => {
           </div>
         )}
       </div>
-
       <div className={"footer_center"}>
         <ShuffleIcon className={"footer_green"} />
         <SkipPreviousIcon className={"footer_icon"} onClick={handleSkipNext} />
@@ -88,7 +86,6 @@ const Footer = ({ spotify }) => {
         <SkipNextIcon className={"footer_icon"} onClick={handleSkipPrevious} />
         <RepeatIcon className={"footer_green"} />
       </div>
-
       <div className={"footer_right"}>
         <Grid container spacing={2}>
           <Grid item>

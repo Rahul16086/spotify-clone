@@ -14,13 +14,14 @@ function App() {
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
     window.location.hash = "";
-    const token = hash.access_token;
+    let token = hash.access_token;
 
     if (token) {
-      dispatch({ type: "SET_TOKEN", accessToken: token });
       spotify.setAccessToken(token);
+      dispatch({ type: "SET_TOKEN", accessToken: token });
 
       spotify.getMe().then((user) => {
+        console.log("user: ", user);
         dispatch({
           type: "SET_USER",
           user: user,
@@ -29,13 +30,19 @@ function App() {
 
       spotify
         .getUserPlaylists()
-        .then((playlists) =>
-          dispatch({ type: "SET_PLAYLISTS", playlists: playlists })
-        );
-
-      spotify.getPlaylist("1OIzwJTbrOeZTHvUXf5yMg").then((response) => {
-        dispatch({ type: "SET_DISCOVER_WEEKLY", discover_weekly: response });
-      });
+        .then((playlists) => {
+          dispatch({ type: "SET_PLAYLISTS", playlists: playlists });
+          console.log(playlists.items);
+          return playlists;
+        })
+        .then((res) => {
+          spotify.getPlaylist(res.items[0].id).then((res) => {
+            dispatch({
+              type: "SET_DISCOVER_WEEKLY",
+              discover_weekly: res,
+            });
+          });
+        });
 
       spotify
         .getMyTopArtists()
